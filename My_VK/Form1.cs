@@ -1,8 +1,8 @@
 namespace My_VK
 {
-    public partial class Form1 : Form
+    public partial class formAuthorization : Form
     {
-        public Form1()
+        public formAuthorization()
         {
             InitializeComponent();
         }
