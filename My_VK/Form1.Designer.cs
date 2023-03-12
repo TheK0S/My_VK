@@ -77,6 +77,7 @@
             this.phoneNumberField.Name = "phoneNumberField";
             this.phoneNumberField.Size = new System.Drawing.Size(237, 27);
             this.phoneNumberField.TabIndex = 3;
+            this.phoneNumberField.TextChanged += new System.EventHandler(this.phoneNumberField_TextChanged);
             // 
             // labelEnterPassword
             // 
