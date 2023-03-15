@@ -49,10 +49,10 @@
             this.iconVK.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.iconVK.Image = ((System.Drawing.Image)(resources.GetObject("iconVK.Image")));
             this.iconVK.InitialImage = ((System.Drawing.Image)(resources.GetObject("iconVK.InitialImage")));
-            this.iconVK.Location = new System.Drawing.Point(396, 31);
+            this.iconVK.Location = new System.Drawing.Point(390, 31);
             this.iconVK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconVK.Name = "iconVK";
-            this.iconVK.Size = new System.Drawing.Size(87, 99);
+            this.iconVK.Size = new System.Drawing.Size(100, 100);
             this.iconVK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconVK.TabIndex = 0;
             this.iconVK.TabStop = false;
@@ -83,6 +83,8 @@
             // phoneNumberField
             // 
             this.phoneNumberField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.phoneNumberField.BackColor = System.Drawing.SystemColors.Window;
+            this.phoneNumberField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.phoneNumberField.Location = new System.Drawing.Point(321, 229);
             this.phoneNumberField.Name = "phoneNumberField";
             this.phoneNumberField.Size = new System.Drawing.Size(237, 27);
@@ -103,6 +105,8 @@
             // passwordField
             // 
             this.passwordField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passwordField.BackColor = System.Drawing.SystemColors.Window;
+            this.passwordField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordField.Location = new System.Drawing.Point(321, 309);
             this.passwordField.Name = "passwordField";
             this.passwordField.PasswordChar = '*';
