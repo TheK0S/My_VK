@@ -2,12 +2,9 @@ using System.Text.RegularExpressions;
 
 namespace My_VK
 {
-    public partial class formAuthorization : Form
-    {
-        string condMail = @"^[a-zA-Z\.\-_]+@([a-zA-Z\.\-_]+\.)+[a-zA-Z]{2,4}$";
-        string condNum = @"^\+\d{12}$";
-        
-        public formAuthorization()
+    public partial class FormAuthorization : Form
+    {      
+        public FormAuthorization()
         {
             InitializeComponent();
             popUpWindow.SetToolTip(checkBoxSaveEnterData, "Выберите, чтобы сохранить\nданные аккаунта для быстрого\nвхода на этом устройстве");
@@ -15,7 +12,7 @@ namespace My_VK
 
         private void phoneNumberField_TextChanged(object sender, EventArgs e)
         {
-            if(Regex.IsMatch(phoneNumberField.Text, condMail) || Regex.IsMatch(phoneNumberField.Text, condNum))
+            if(Regex.IsMatch(phoneNumberField.Text, DataBase.condMail) || Regex.IsMatch(phoneNumberField.Text, DataBase.condPhoneNumber))
             {
                 Confirm.Enabled = true;
                 phoneNumberField.ForeColor = Color.Black;
@@ -55,8 +52,8 @@ namespace My_VK
         private void registrationButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            var formRegistaration = new FormRegistration();
-            formRegistaration.Show();
+            DataBase.formRegistration = new FormRegistration();
+            DataBase.formRegistration.Show();
         }
     }
 }

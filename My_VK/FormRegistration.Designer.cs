@@ -40,15 +40,16 @@
             this.labelBirthDate = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.radioButtonMan = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelGender = new System.Windows.Forms.Label();
             this.radioButtonWoman = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.passwordField = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelPhoneNumber = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.phoneNumberField = new System.Windows.Forms.TextBox();
+            this.passwordConfirmField = new System.Windows.Forms.TextBox();
             this.labelConfirmPassword = new System.Windows.Forms.Label();
             this.Confirm = new System.Windows.Forms.Button();
+            this.labelPasswordError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconVK)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,16 +165,16 @@
             this.radioButtonMan.Text = "Мужской";
             this.radioButtonMan.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // labelGender
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(361, 627);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 21);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Пол:";
+            this.labelGender.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelGender.AutoSize = true;
+            this.labelGender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelGender.Location = new System.Drawing.Point(361, 627);
+            this.labelGender.Name = "labelGender";
+            this.labelGender.Size = new System.Drawing.Size(41, 21);
+            this.labelGender.TabIndex = 12;
+            this.labelGender.Text = "Пол:";
             // 
             // radioButtonWoman
             // 
@@ -187,13 +188,14 @@
             this.radioButtonWoman.Text = "Женский";
             this.radioButtonWoman.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // passwordField
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(444, 267);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(340, 27);
-            this.textBox1.TabIndex = 17;
+            this.passwordField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passwordField.Location = new System.Drawing.Point(444, 267);
+            this.passwordField.Name = "passwordField";
+            this.passwordField.PasswordChar = '*';
+            this.passwordField.Size = new System.Drawing.Size(340, 27);
+            this.passwordField.TabIndex = 17;
             // 
             // labelPassword
             // 
@@ -217,21 +219,24 @@
             this.labelPhoneNumber.TabIndex = 15;
             this.labelPhoneNumber.Text = "Номер телефона:";
             // 
-            // textBox2
+            // phoneNumberField
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(444, 207);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(340, 27);
-            this.textBox2.TabIndex = 14;
+            this.phoneNumberField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.phoneNumberField.Location = new System.Drawing.Point(444, 207);
+            this.phoneNumberField.Name = "phoneNumberField";
+            this.phoneNumberField.Size = new System.Drawing.Size(340, 27);
+            this.phoneNumberField.TabIndex = 14;
+            this.phoneNumberField.TextChanged += new System.EventHandler(this.phoneNumberField_TextChanged);
             // 
-            // textBox3
+            // passwordConfirmField
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Location = new System.Drawing.Point(444, 327);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(340, 27);
-            this.textBox3.TabIndex = 19;
+            this.passwordConfirmField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passwordConfirmField.Location = new System.Drawing.Point(444, 327);
+            this.passwordConfirmField.Name = "passwordConfirmField";
+            this.passwordConfirmField.PasswordChar = '*';
+            this.passwordConfirmField.Size = new System.Drawing.Size(340, 27);
+            this.passwordConfirmField.TabIndex = 19;
+            this.passwordConfirmField.TextChanged += new System.EventHandler(this.passwordConfirmField_TextChanged);
             // 
             // labelConfirmPassword
             // 
@@ -260,6 +265,19 @@
             this.Confirm.TabIndex = 20;
             this.Confirm.Text = "Продолжить";
             this.Confirm.UseVisualStyleBackColor = false;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
+            // 
+            // labelPasswordError
+            // 
+            this.labelPasswordError.AutoSize = true;
+            this.labelPasswordError.BackColor = System.Drawing.SystemColors.Control;
+            this.labelPasswordError.ForeColor = System.Drawing.Color.Red;
+            this.labelPasswordError.Location = new System.Drawing.Point(813, 327);
+            this.labelPasswordError.Name = "labelPasswordError";
+            this.labelPasswordError.Size = new System.Drawing.Size(167, 20);
+            this.labelPasswordError.TabIndex = 21;
+            this.labelPasswordError.Text = "Пароли не совпадают!";
+            this.labelPasswordError.Visible = false;
             // 
             // FormRegistration
             // 
@@ -267,15 +285,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.labelPasswordError);
             this.Controls.Add(this.Confirm);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.passwordConfirmField);
             this.Controls.Add(this.labelConfirmPassword);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.passwordField);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelPhoneNumber);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.phoneNumberField);
             this.Controls.Add(this.radioButtonWoman);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelGender);
             this.Controls.Add(this.radioButtonMan);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.labelBirthDate);
@@ -291,6 +310,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormRegistration";
             this.Text = "FormRegistration";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRegistration_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.iconVK)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -310,14 +330,15 @@
         private Label labelBirthDate;
         private DateTimePicker dateTimePicker1;
         private RadioButton radioButtonMan;
-        private Label label3;
+        private Label labelGender;
         private RadioButton radioButtonWoman;
-        private TextBox textBox1;
+        private TextBox passwordField;
         private Label labelPassword;
         private Label labelPhoneNumber;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox phoneNumberField;
+        private TextBox passwordConfirmField;
         private Label labelConfirmPassword;
         private Button Confirm;
+        private Label labelPasswordError;
     }
 }

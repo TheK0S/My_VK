@@ -1,6 +1,6 @@
 ﻿namespace My_VK
 {
-    partial class formAuthorization
+    partial class FormAuthorization
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formAuthorization));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAuthorization));
             this.iconVK = new System.Windows.Forms.PictureBox();
             this.labelEnterEmail = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -178,7 +178,7 @@
             this.label2.Text = "Если у вас нет учетной записи";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // formAuthorization
+            // FormAuthorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,7 +196,7 @@
             this.Controls.Add(this.iconVK);
             this.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "formAuthorization";
+            this.Name = "FormAuthorization";
             this.Text = "My VK";
             this.Load += new System.EventHandler(this.formAuthorization_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconVK)).EndInit();
