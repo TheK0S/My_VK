@@ -12,7 +12,9 @@ namespace My_VK
 
         private void phoneNumberField_TextChanged(object sender, EventArgs e)
         {
-            if(Regex.IsMatch(phoneNumberField.Text, DataBase.condMail) || Regex.IsMatch(phoneNumberField.Text, DataBase.condPhoneNumber))
+            labelAuthorizationError.Visible = false;
+
+            if (Regex.IsMatch(phoneNumberField.Text, DataBase.condMail) || Regex.IsMatch(phoneNumberField.Text, DataBase.condPhoneNumber))
             {
                 Confirm.Enabled = true;
                 phoneNumberField.ForeColor = Color.Black;
@@ -54,6 +56,23 @@ namespace My_VK
             this.Visible = false;
             DataBase.formRegistration = new FormRegistration();
             DataBase.formRegistration.Show();
+        }
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            if(DataBase.isUserVrified(phoneNumberField.Text, passwordField.Text))
+            {
+                DataBase.homePage = new HomePage();
+            }
+            else
+            {
+                labelAuthorizationError.Visible = true;
+            }
+        }
+
+        private void passwordField_TextChanged(object sender, EventArgs e)
+        {
+            labelAuthorizationError.Visible = false;
         }
     }
 }

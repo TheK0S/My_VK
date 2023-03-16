@@ -34,6 +34,15 @@ namespace My_VK
 
         private void Confirm_Click(object sender, EventArgs e)
         {
+            if(DataBase.isUniqueLogin(phoneNumberField.Text))
+            {
+
+                labelLoginAlreadyRegistered.Visible = false;
+            }
+            else
+            {
+                labelLoginAlreadyRegistered.Visible = true;
+            }
 
             DataBase.formAuthorization.Visible = true;
             Close();

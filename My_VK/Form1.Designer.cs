@@ -41,6 +41,7 @@
             this.popUpWindow = new System.Windows.Forms.ToolTip(this.components);
             this.registrationButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.labelAuthorizationError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconVK)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,6 +113,7 @@
             this.passwordField.PasswordChar = '*';
             this.passwordField.Size = new System.Drawing.Size(237, 27);
             this.passwordField.TabIndex = 5;
+            this.passwordField.TextChanged += new System.EventHandler(this.passwordField_TextChanged);
             // 
             // checkBoxSaveEnterData
             // 
@@ -143,6 +145,7 @@
             this.Confirm.TabIndex = 7;
             this.Confirm.Text = "Продолжить";
             this.Confirm.UseVisualStyleBackColor = false;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // popUpWindow
             // 
@@ -178,12 +181,27 @@
             this.label2.Text = "Если у вас нет учетной записи";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelAuthorizationError
+            // 
+            this.labelAuthorizationError.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelAuthorizationError.AutoSize = true;
+            this.labelAuthorizationError.BackColor = System.Drawing.SystemColors.Menu;
+            this.labelAuthorizationError.ForeColor = System.Drawing.Color.Red;
+            this.labelAuthorizationError.Location = new System.Drawing.Point(332, 517);
+            this.labelAuthorizationError.Name = "labelAuthorizationError";
+            this.labelAuthorizationError.Size = new System.Drawing.Size(216, 20);
+            this.labelAuthorizationError.TabIndex = 10;
+            this.labelAuthorizationError.Text = "Неверный логин или пароль!";
+            this.labelAuthorizationError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAuthorizationError.Visible = false;
+            // 
             // FormAuthorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.labelAuthorizationError);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.registrationButton);
             this.Controls.Add(this.Confirm);
@@ -218,5 +236,6 @@
         private ToolTip popUpWindow;
         private Button registrationButton;
         private Label label2;
+        private Label labelAuthorizationError;
     }
 }

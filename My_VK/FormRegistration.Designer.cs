@@ -50,6 +50,7 @@
             this.labelConfirmPassword = new System.Windows.Forms.Label();
             this.Confirm = new System.Windows.Forms.Button();
             this.labelPasswordError = new System.Windows.Forms.Label();
+            this.labelLoginAlreadyRegistered = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconVK)).BeginInit();
             this.SuspendLayout();
             // 
@@ -279,12 +280,26 @@
             this.labelPasswordError.Text = "Пароли не совпадают!";
             this.labelPasswordError.Visible = false;
             // 
+            // labelLoginAlreadyRegistered
+            // 
+            this.labelLoginAlreadyRegistered.AutoSize = true;
+            this.labelLoginAlreadyRegistered.BackColor = System.Drawing.SystemColors.Control;
+            this.labelLoginAlreadyRegistered.ForeColor = System.Drawing.Color.Red;
+            this.labelLoginAlreadyRegistered.Location = new System.Drawing.Point(813, 208);
+            this.labelLoginAlreadyRegistered.Name = "labelLoginAlreadyRegistered";
+            this.labelLoginAlreadyRegistered.Size = new System.Drawing.Size(228, 20);
+            this.labelLoginAlreadyRegistered.TabIndex = 22;
+            this.labelLoginAlreadyRegistered.Text = "Телефон уже зарегистрирован!";
+            this.labelLoginAlreadyRegistered.Visible = false;
+            // 
             // FormRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.labelLoginAlreadyRegistered);
             this.Controls.Add(this.labelPasswordError);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.passwordConfirmField);
@@ -309,7 +324,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormRegistration";
-            this.Text = "FormRegistration";
+            this.Text = "My VK";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRegistration_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.iconVK)).EndInit();
             this.ResumeLayout(false);
@@ -340,5 +356,6 @@
         private Label labelConfirmPassword;
         private Button Confirm;
         private Label labelPasswordError;
+        private Label labelLoginAlreadyRegistered;
     }
 }
