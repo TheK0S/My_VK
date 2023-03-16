@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,34 @@ namespace My_VK
             InitializeComponent();
         }
 
+        public bool IsUniqueLogin()
+        {
+            foreach (var item in DataBase.users)
+                if (phoneNumberField.Text == item.Login)
+                    return false;
+
+            return true;
+        }
+
+        public bool PasswordComplexityCheck()
+        {
+            return true;
+        }
+
+        public bool IsAuthorizationFieldsValidated()
+        {
+            return IsUniqueLogin()
+                && passwordField.Text == passwordConfirmField.Text
+                && FirstNameField.TextLength > 2
+                && SecondNameField.TextLength > 2
+                && LastNameField.TextLength > 2
+                && dateTimePicker1.Value < dateTimePicker1.MaxDate
+                && (radioButtonMan.Checked || radioButtonWoman.Checked);
+        }
+
         private void phoneNumberField_TextChanged(object sender, EventArgs e)
         {
-            if (Regex.IsMatch(phoneNumberField.Text, DataBase.condMail) || Regex.IsMatch(phoneNumberField.Text, DataBase.condPhoneNumber))
+            if (DataBase.IsPhoneNumberValidated(phoneNumberField.Text))
             {
                 Confirm.Enabled = true;
                 phoneNumberField.ForeColor = Color.Black;
@@ -34,7 +60,7 @@ namespace My_VK
 
         private void Confirm_Click(object sender, EventArgs e)
         {
-            if(DataBase.isUniqueLogin(phoneNumberField.Text))
+            if(IsUniqueLogin())
             {
 
                 labelLoginAlreadyRegistered.Visible = false;
@@ -65,6 +91,11 @@ namespace My_VK
                 passwordConfirmField.ForeColor = DefaultForeColor;
                 labelPasswordError.Visible = false;
             }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1.MaxDate = DateTime.Now;
         }
     }
 }

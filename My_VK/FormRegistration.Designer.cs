@@ -51,6 +51,7 @@
             this.Confirm = new System.Windows.Forms.Button();
             this.labelPasswordError = new System.Windows.Forms.Label();
             this.labelLoginAlreadyRegistered = new System.Windows.Forms.Label();
+            this.labelEasyPassword = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconVK)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,6 +154,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
             this.dateTimePicker1.TabIndex = 10;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // radioButtonMan
             // 
@@ -273,7 +275,7 @@
             this.labelPasswordError.AutoSize = true;
             this.labelPasswordError.BackColor = System.Drawing.SystemColors.Control;
             this.labelPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.labelPasswordError.Location = new System.Drawing.Point(813, 327);
+            this.labelPasswordError.Location = new System.Drawing.Point(813, 330);
             this.labelPasswordError.Name = "labelPasswordError";
             this.labelPasswordError.Size = new System.Drawing.Size(167, 20);
             this.labelPasswordError.TabIndex = 21;
@@ -285,12 +287,24 @@
             this.labelLoginAlreadyRegistered.AutoSize = true;
             this.labelLoginAlreadyRegistered.BackColor = System.Drawing.SystemColors.Control;
             this.labelLoginAlreadyRegistered.ForeColor = System.Drawing.Color.Red;
-            this.labelLoginAlreadyRegistered.Location = new System.Drawing.Point(813, 208);
+            this.labelLoginAlreadyRegistered.Location = new System.Drawing.Point(813, 210);
             this.labelLoginAlreadyRegistered.Name = "labelLoginAlreadyRegistered";
             this.labelLoginAlreadyRegistered.Size = new System.Drawing.Size(228, 20);
             this.labelLoginAlreadyRegistered.TabIndex = 22;
             this.labelLoginAlreadyRegistered.Text = "Телефон уже зарегистрирован!";
             this.labelLoginAlreadyRegistered.Visible = false;
+            // 
+            // labelEasyPassword
+            // 
+            this.labelEasyPassword.AutoSize = true;
+            this.labelEasyPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.labelEasyPassword.ForeColor = System.Drawing.Color.Red;
+            this.labelEasyPassword.Location = new System.Drawing.Point(813, 270);
+            this.labelEasyPassword.Name = "labelEasyPassword";
+            this.labelEasyPassword.Size = new System.Drawing.Size(195, 20);
+            this.labelEasyPassword.TabIndex = 23;
+            this.labelEasyPassword.Text = "Слишком простой пароль!";
+            this.labelEasyPassword.Visible = false;
             // 
             // FormRegistration
             // 
@@ -299,6 +313,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.labelEasyPassword);
             this.Controls.Add(this.labelLoginAlreadyRegistered);
             this.Controls.Add(this.labelPasswordError);
             this.Controls.Add(this.Confirm);
@@ -357,5 +372,6 @@
         private Button Confirm;
         private Label labelPasswordError;
         private Label labelLoginAlreadyRegistered;
+        private Label labelEasyPassword;
     }
 }
