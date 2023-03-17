@@ -30,13 +30,17 @@ namespace My_VK
 
         public bool PasswordComplexityCheck()
         {
-            return true;
+            return Regex.IsMatch(passwordField.Text, "(?=.*[0-9])")
+                && Regex.IsMatch(passwordField.Text, "(?=.*[a-z])")
+                && Regex.IsMatch(passwordField.Text, "(?=.*[A-Z])")
+                && passwordField.TextLength > 6;
         }
 
         public bool IsAuthorizationFieldsValidated()
         {
             return IsUniqueLogin()
                 && passwordField.Text == passwordConfirmField.Text
+                && PasswordComplexityCheck()
                 && FirstNameField.TextLength > 2
                 && SecondNameField.TextLength > 2
                 && LastNameField.TextLength > 2
@@ -60,18 +64,25 @@ namespace My_VK
 
         private void Confirm_Click(object sender, EventArgs e)
         {
-            if(IsUniqueLogin())
-            {
+            labelLoginAlreadyRegistered.Visible = !IsUniqueLogin();
 
-                labelLoginAlreadyRegistered.Visible = false;
+            if(IsAuthorizationFieldsValidated())
+            {
+                labelRegistrationError.Visible = false;
+
+                DataBase.currentUser = new User(
+                    FirstNameField.Text, SecondNameField.Text, LastNameField.Text, phoneNumberField.Text, passwordField.Text);
+
+                DataBase.users.Add(DataBase.currentUser);
+
+                DataBase.formAuthorization.Visible = true;
+
+                Close();
             }
             else
             {
-                labelLoginAlreadyRegistered.Visible = true;
+                labelRegistrationError.Visible = true;
             }
-
-            DataBase.formAuthorization.Visible = true;
-            Close();
         }
 
         private void FormRegistration_FormClosing(object sender, FormClosingEventArgs e)
@@ -96,6 +107,11 @@ namespace My_VK
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             dateTimePicker1.MaxDate = DateTime.Now;
+        }
+
+        private void passwordField_TextChanged(object sender, EventArgs e)
+        {
+            labelEasyPassword.Visible = !PasswordComplexityCheck();
         }
     }
 }

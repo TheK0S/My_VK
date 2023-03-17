@@ -9,6 +9,7 @@ namespace My_VK
 {
     internal class DataBase
     {
+        public static User? currentUser;
         public static List<User> users = new List<User>();
         public static FormAuthorization? formAuthorization;
         public static FormRegistration? formRegistration;

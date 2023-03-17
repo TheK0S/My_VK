@@ -63,6 +63,7 @@ namespace My_VK
             if(DataBase.IsUserVrified(phoneNumberField.Text, passwordField.Text))
             {
                 DataBase.homePage = new HomePage();
+                DataBase.homePage.Show();
             }
             else
             {
